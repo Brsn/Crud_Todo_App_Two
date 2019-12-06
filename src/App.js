@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CreateTodo from "./components/create-todo";
 import EditTodo from "./components/edit-todo";
 import TodosList from "./components/todos-list";
-
+import deleteTodo from "./components/delete-todo";
 
 class App extends Component {
   render() {
@@ -17,6 +17,7 @@ class App extends Component {
         <Route path="/" exact component={TodosList} />
         <Route path="/edit/:id" component={EditTodo} />
         <Route path="/create" component={CreateTodo} />
+        <Route path="/delete/:id" componet={deleteTodo} />
       </Router >
     );
   }

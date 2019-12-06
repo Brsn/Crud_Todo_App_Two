@@ -39,7 +39,7 @@ export default class TodosList extends Component {
             todo_completed: this.state.todo_completed
         }
 
-        axios.post("http://localhost:4000/todos/add", newTodo)
+        axios.post("http://localhost:5000/todos/add", newTodo)
             .then(res => console.log(res.data));
         this.setState({
             todo_name: '',
@@ -53,7 +53,7 @@ export default class TodosList extends Component {
                 <h3>Create New Todo</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Name: </label>
+                        <label>Todo Name: </label>
                         <input type="text"
                             className="form-control"
                             value={this.state.todo_name}
@@ -61,7 +61,7 @@ export default class TodosList extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label>Description: </label>
+                        <label>Todo Description: </label>
                         <input type="text"
                             className="form-control"
                             value={this.state.todo_description}
