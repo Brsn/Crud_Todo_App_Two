@@ -11,8 +11,8 @@ export default class TodosList extends Component {
             todo_description: '',
             todo_completed: false
         }
-        this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
         this.onChangeTodoName = this.onChangeTodoName.bind(this);
+        this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
     onChangeTodoDescription(e) {
@@ -35,7 +35,7 @@ export default class TodosList extends Component {
 
         const newTodo = {
             todo_name: this.state.todo_name,
-            todo_responsible: this.state.todo_description,
+            todo_description: this.state.todo_description,
             todo_completed: this.state.todo_completed
         }
 
