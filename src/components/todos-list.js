@@ -4,9 +4,8 @@ import axios from 'axios';
 
 const Todo = props => (
     <tr>
-        <td>{props.todo.todo_name}</td>
-        <td>{props.todo.todo_description}</td>
-        <td>{props.todo.todo_completed}</td>
+        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_name}</td>
+        <td className={props.todo.todo_completed ? 'completed' : ''}>{props.todo.todo_description}</td>
         <td>
             <Link to={"/edit/" + props.todo._id}>Edit</Link>
         </td>
@@ -29,7 +28,16 @@ export default class TodosList extends Component {
                 console.log(error);
             })
     }
-
+    //when the component is updated through the edit-to, the page will render automatically
+    componentDidUpdate() {
+        axios.get('http://localhost:5000/todos/')
+            .then(response => {
+                this.setState({ todos: response.data });
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
     todoList() {
         return this.state.todos.map(function (currentTodo, i) {
             return <Todo todo={currentTodo} key={i} />;

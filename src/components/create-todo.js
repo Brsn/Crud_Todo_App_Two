@@ -11,20 +11,23 @@ export default class TodosList extends Component {
             todo_description: '',
             todo_completed: false
         }
+        //bind the methods
         this.onChangeTodoName = this.onChangeTodoName.bind(this);
         this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-    }
-    onChangeTodoDescription(e) {
-        this.setState({
-            todo_description: e.target.value
-        });
     }
     onChangeTodoName(e) {
         this.setState({
             todo_name: e.target.value
         });
     }
+    //for updates the state of name
+    onChangeTodoDescription(e) {
+        this.setState({
+            todo_description: e.target.value
+        });
+    }
+    //form updates the state of description 
     onSubmit(e) {
         e.preventDefault();
 
@@ -42,6 +45,7 @@ export default class TodosList extends Component {
         axios.post("http://localhost:5000/todos/add", newTodo)
             .then(res => console.log(res.data));
         this.setState({
+            //here we reset the state after submitting
             todo_name: '',
             todo_description: '',
             todo_completed: false
@@ -58,6 +62,7 @@ export default class TodosList extends Component {
                             className="form-control"
                             value={this.state.todo_name}
                             onChange={this.onChangeTodoName}
+                        //call the onChange method to save to the state
                         />
                     </div>
                     <div className="form-group">
@@ -66,10 +71,11 @@ export default class TodosList extends Component {
                             className="form-control"
                             value={this.state.todo_description}
                             onChange={this.onChangeTodoDescription}
+                        //call the onChange method to save to the state
                         />
                     </div>
                     <div className="form-group">
-                        <input type="submit" value="Create Todo" className="btn btn-primary" />
+                        <input type="submit" value="Create Todo" className="btn btn-success" />
                     </div>
                 </form>
             </div>
