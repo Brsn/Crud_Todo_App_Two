@@ -69,7 +69,6 @@ export default class TodosList extends Component {
                         <label>Name: </label>
                         <input type="text" className="form-control" value={this.state.todo_name} onChange={this.onChangeTodoName}>
                         </input>
-                        <label>Name: </label>
                     </div>
                     <div>
                         <div className="form-group">
