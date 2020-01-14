@@ -49,7 +49,7 @@ export default class deleteTodo extends Component {
         axios.delete("http://localhost:5000/todos/delete/" + this.props.match.params.id, obj)
             //deletes our todo in the backend by matching the id and using the onsubmit object
             .then(res => console.log(res.data));
-        this.props.history.push('/');
+        //this.props.history.push('/');
     }
 
     render() {

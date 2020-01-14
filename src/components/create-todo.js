@@ -16,6 +16,8 @@ export default class TodosList extends Component {
         this.onChangeTodoDescription = this.onChangeTodoDescription.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
+
+    // all of our set state methods
     onChangeTodoName(e) {
         this.setState({
             todo_name: e.target.value
@@ -36,12 +38,13 @@ export default class TodosList extends Component {
         console.log(`Todo Description: ${this.state.todo_description}`);
         console.log(`Todo Completed: ${this.state.todo_completed}`);
 
+        //stores are todos in an object
         const newTodo = {
             todo_name: this.state.todo_name,
             todo_description: this.state.todo_description,
             todo_completed: this.state.todo_completed
         }
-
+        //we use axios to post with our server
         axios.post("http://localhost:5000/todos/add", newTodo)
             .then(res => console.log(res.data));
         this.setState({
