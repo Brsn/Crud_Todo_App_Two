@@ -46,7 +46,7 @@ export default class TodosList extends Component {
             todo_completed: this.state.todo_completed
         }
         //we use axios to post with our server
-        axios.post("https://localhost:5000/todos/add", newTodo)
+        axios.post("http://localhost:5000/todos/add", newTodo)
             .then(res => console.log(res.data));
         this.setState({
             //here we reset the state after submitting
