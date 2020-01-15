@@ -30,7 +30,7 @@ export default class TodosList extends Component {
 
 
     refreshPage() {
-        axios.get('https://localhost:5000/todos/')
+        axios.get('http://localhost:5000/todos/')
             .then(response => {
                 this.setState({ todos: response.data });
 

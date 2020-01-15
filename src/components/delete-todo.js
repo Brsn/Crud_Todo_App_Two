@@ -16,7 +16,7 @@ export default class deleteTodo extends Component {
         }
     }
     componentDidMount() {
-        axios.get('https://localhost:5000/todos/' + this.props.match.params.id)
+        axios.get('http://localhost:5000/todos/' + this.props.match.params.id)
             //get request to the backend "server" for the todolist
             .then(response => {
                 this.setState({
@@ -46,7 +46,7 @@ export default class deleteTodo extends Component {
             todo_name: this.state.todo_name,
             todo_description: this.state.todo_description,
         };
-        axios.delete("https://localhost:5000/todos/delete/" + this.props.match.params.id, obj)
+        axios.delete("http://localhost:5000/todos/delete/" + this.props.match.params.id, obj)
             //deletes our todo in the backend by matching the id and using the onsubmit object
             .then(res => console.log(res.data));
         //this.props.history.push('/');

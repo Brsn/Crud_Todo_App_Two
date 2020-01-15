@@ -18,7 +18,7 @@ export default class TodosList extends Component {
         }
     }
     componentDidMount() {
-        axios.get('https://localhost:5000/todos/' + this.props.match.params.id)
+        axios.get('http://localhost:5000/todos/' + this.props.match.params.id)
             //get request to the backend "server" for the todolist
             .then(response => {
                 this.setState({
@@ -54,7 +54,7 @@ export default class TodosList extends Component {
             todo_description: this.state.todo_description,
             todo_completed: this.state.todo_completed
         };
-        axios.post("https://localhost:5000/todos/update/" + this.props.match.params.id, obj)
+        axios.post("http://localhost:5000/todos/update/" + this.props.match.params.id, obj)
             //updates our todo in the backend by matching the id and using the onsubmit object
             .then(res => console.log(res.data));
         //this.props.history.push('/');
