@@ -4,15 +4,21 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const todoRoutes = express.Router();
-const PORT = 5000;
-
+const PORT = process.env.PORT || 5000;
+const path = require('path');
 let Todo = require('./todo.model');
 
 //middleware
 app.use(cors());
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+});
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
 //connect mongoose with the local mongo server
 const connection = mongoose.connection;
 
@@ -90,6 +96,13 @@ todoRoutes.route('/update/:id').post(function (req, res) {
 app.use('/todos', todoRoutes);
 //uses express routes
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'build', 'index'));
+    })
+}
 app.listen(PORT, function () {
     console.log("Server is running on Port: " + PORT);
 })
