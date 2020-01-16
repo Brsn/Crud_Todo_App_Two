@@ -33,7 +33,6 @@ export default class TodosList extends Component {
     //form updates the state of description 
     onSubmit(e) {
         e.preventDefault();
-
         console.log(`Form submitted:`);
         console.log(`Todo Name: ${this.state.todo_name}`);
         console.log(`Todo Description: ${this.state.todo_description}`);

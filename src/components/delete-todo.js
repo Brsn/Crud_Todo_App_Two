@@ -41,7 +41,7 @@ export default class deleteTodo extends Component {
     }
 
     onSubmit(e) {
-        e.preventDefault();
+
         const obj = {
             todo_name: this.state.todo_name,
             todo_description: this.state.todo_description,
