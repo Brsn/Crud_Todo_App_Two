@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://admin:MJC3vhvKXTaWEpUv@helioatlas-1vrvg.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 //connect mongoose with the local mongo server
 const connection = mongoose.connection;
 
