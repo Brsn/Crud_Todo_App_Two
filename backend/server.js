@@ -10,8 +10,8 @@ let Todo = require('./todo.model');
 
 //middleware
 app.use(cors());
-app.all('*', function(req, res, next) {
-    var origin = req.get('origin'); 
+app.all('*', function (req, res, next) {
+    var origin = req.get('origin');
     res.header('Access-Control-Allow-Origin', origin);
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -20,8 +20,9 @@ app.all('*', function(req, res, next) {
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv+https://admin:MJC3vhvKXTaWEpUv@helioatlas-1vrvg.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
+//mongoose.connect('mongodb+srv+https://admin:MJC3vhvKXTaWEpUv@helioatlas-1vrvg.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true });
 //connect mongoose with the local mongo server
+mongoose.connect('mongodb+srv://admin:MJC3vhvKXTaWEpUv@helioatlas-1vrvg.mongodb.net/test', { useNewUrlParser: true })
 const connection = mongoose.connection;
 
 connection.once('open', function () {
@@ -78,7 +79,7 @@ todoRoutes.route('/update/:id').post(function (req, res) {
         if (!todo)
             res.status(404).send('data is not found');
         else
-        todo.todo_name = req.body.todo_name;
+            todo.todo_name = req.body.todo_name;
         todo.todo_description = req.body.todo_description;
         todo.todo_completed = req.body.todo_completed;
 
