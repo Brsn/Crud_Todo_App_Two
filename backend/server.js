@@ -71,7 +71,7 @@ todoRoutes.route('/update/:id').post(function (req, res) {
         if (!todo)
             res.status(404).send('data is not found');
         else
-            todo.todo_name = req.body.todo_name;
+        todo.todo_name = req.body.todo_name;
         todo.todo_description = req.body.todo_description;
         todo.todo_completed = req.body.todo_completed;
 
